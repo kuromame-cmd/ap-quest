@@ -1,0 +1,759 @@
+<link rel="stylesheet" href="./style.css">
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>AP QUEST</title>
+</head>
+
+<body>
+
+<main class="game">
+
+  <!-- =========================
+       HOME
+  ========================== -->
+
+  <section id="homeScreen">
+
+    <h1>⚔️ AP QUEST</h1>
+
+    <p class="subtitle">
+      〜 応用情報技術者への冒険 〜
+    </p>
+
+    <section class="player">
+
+      <h2>
+        冒険者 Lv.<span id="levelText">1</span>
+      </h2>
+
+      <p class="title">
+        🏅
+        <span id="titleText">
+          駆け出し冒険者
+        </span>
+      </p>
+
+      <p>
+        EXP
+        <span id="expText">0</span>
+        /
+        <span id="nextExpText">100</span>
+      </p>
+
+      <div class="exp-bar">
+        <div
+          class="exp"
+          id="expBar"
+        ></div>
+      </div>
+
+      <p class="small">
+        累計EXP：
+        <span id="totalExpText">0</span>
+      </p>
+
+      <p class="streak">
+        🔥 STREAK：
+        <span id="streakText">0</span>日
+      </p>
+
+    </section>
+
+
+    <section class="quest">
+
+      <h2>📜 冒険</h2>
+
+      <p>
+        応用情報の世界を攻略しよう！
+      </p>
+
+      <button id="mapButton">
+        🗺️ ワールドマップへ
+      </button>
+
+    </section>
+
+    <!-- =====================================
+     SAVE DATA
+===================================== -->
+
+<div class="save-area">
+
+  <h3>💾 セーブデータ</h3>
+
+  <button id="exportSaveButton">
+    💾 セーブコードを作る
+  </button>
+
+  <button id="importSaveButton">
+    📥 セーブコードを読み込む
+  </button>
+
+</div>
+
+
+    <section class="monster-box">
+
+      <h2>💀 復習ダンジョン</h2>
+
+      <p>
+        復習モンスター
+        ×
+        <strong>
+          <span id="monsterCount">0</span>体
+        </strong>
+      </p>
+
+      <p class="small">
+        間違えた問題から
+        モンスターが生まれます
+      </p>
+
+      <button id="dungeonButton">
+        💀 復習ダンジョンへ
+      </button>
+
+    </section>
+
+  </section>
+
+
+  <!-- =========================
+       WORLD MAP
+  ========================== -->
+
+  <section
+    id="mapScreen"
+    class="hidden"
+  >
+
+    <h1>🗺️ WORLD MAP</h1>
+
+    <p class="subtitle">
+      応用情報の世界を攻略せよ
+    </p>
+
+
+    <!-- NETWORK -->
+
+    <div
+      class="world network-world"
+      id="networkWorld"
+    >
+
+      <div class="world-icon">
+        🌊
+      </div>
+
+      <div class="world-info">
+
+        <h2>
+          ネットワーク海域
+        </h2>
+
+        <p>
+          攻略率
+          <span id="networkProgressText">0</span>%
+        </p>
+
+        <div class="world-progress">
+          <div
+            class="world-progress-bar"
+            id="networkProgressBar"
+          ></div>
+        </div>
+
+        <p id="networkStatus">
+          ⚔️ 冒険中
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- SECURITY -->
+
+    <div
+  class="world security-world"
+  id="securityWorld"
+>
+
+  <div class="world-icon">
+    🔐
+  </div>
+
+  <div class="world-info">
+
+    <h2>
+      セキュリティ城塞
+    </h2>
+
+    <p>
+      攻略率
+      <span id="securityProgressText">0</span>%
+    </p>
+
+    <div class="world-progress">
+      <div
+        class="world-progress-bar security-progress-bar"
+        id="securityProgressBar"
+      ></div>
+    </div>
+
+    <p id="securityStatus">
+      ⚔️ 冒険中
+    </p>
+
+  </div>
+
+</div>
+
+    <!-- DATABASE -->
+
+   <div
+  class="world database-world"
+  id="databaseWorld"
+>
+
+  <div class="world-icon">
+    🗄️
+  </div>
+
+  <div class="world-info">
+
+    <h2>
+      データベース地下迷宮
+    </h2>
+
+    <p>
+      攻略率
+      <span id="databaseProgressText">0</span>%
+    </p>
+
+    <div class="world-progress">
+      <div
+        class="world-progress-bar database-progress-bar"
+        id="databaseProgressBar"
+      ></div>
+    </div>
+
+    <p id="databaseStatus">
+      ⚔️ 冒険中
+    </p>
+
+  </div>
+
+</div>
+
+
+    <!-- ALGORITHM -->
+
+    <div
+  class="world algorithm-world"
+  id="algorithmWorld"
+>
+
+  <div class="world-icon">
+    🌲
+  </div>
+
+  <div class="world-info">
+
+    <h2>
+      アルゴリズムの森
+    </h2>
+
+    <p>
+      攻略率
+      <span id="algorithmProgressText">0</span>%
+    </p>
+
+    <div class="world-progress">
+      <div
+        class="world-progress-bar algorithm-progress-bar"
+        id="algorithmProgressBar"
+      ></div>
+    </div>
+
+    <p id="algorithmStatus">
+      ⚔️ 冒険中
+    </p>
+
+  </div>
+
+</div>
+
+
+    <!-- MANAGEMENT -->
+
+   <div
+  class="world management-world"
+  id="managementWorld"
+>
+
+  <div class="world-icon">
+    🏰
+  </div>
+
+  <div class="world-info">
+
+    <h2>
+      マネジメント王国
+    </h2>
+
+    <p>
+      攻略率
+      <span id="managementProgressText">0</span>%
+    </p>
+
+    <div class="world-progress">
+      <div
+        class="world-progress-bar management-progress-bar"
+        id="managementProgressBar"
+      ></div>
+    </div>
+
+    <p id="managementStatus">
+      ⚔️ 冒険中
+    </p>
+
+  </div>
+
+</div>
+
+
+    <!-- STRATEGY -->
+
+   <div
+  class="world strategy-world"
+  id="strategyWorld"
+>
+
+  <div class="world-icon">
+    📊
+  </div>
+
+  <div class="world-info">
+
+    <h2>
+      ストラテジ帝国
+    </h2>
+
+    <p>
+      攻略率
+      <span id="strategyProgressText">0</span>%
+    </p>
+
+    <div class="world-progress">
+      <div
+        class="world-progress-bar strategy-progress-bar"
+        id="strategyProgressBar"
+      ></div>
+    </div>
+
+    <p id="strategyStatus">
+      ⚔️ 冒険中
+    </p>
+
+  </div>
+
+</div>
+
+    <!-- =====================================
+     FINAL TRIAL
+===================================== -->
+
+<div
+  class="world final-world locked"
+  id="finalWorld"
+>
+
+  <div class="world-icon">
+    ⚔️
+  </div>
+
+  <div class="world-info">
+
+    <h2>
+      最終試練
+    </h2>
+
+    <p>
+      全6エリアを制覇した者だけが
+      挑戦できる最後の戦い
+    </p>
+
+    <p id="finalStatus">
+      🔒 LOCKED
+    </p>
+
+  </div>
+
+</div>
+
+
+    <button
+      id="mapBackButton"
+      class="gray-button"
+    >
+      🏠 ホームへ
+    </button>
+
+  </section>
+
+
+  <!-- =========================
+       STAGE SELECT
+  ========================== -->
+
+  <section
+    id="stageScreen"
+    class="hidden"
+  >
+
+    <h1 id="areaTitle">
+      🌊 ネットワーク海域
+    </h1>
+
+    <p class="subtitle">
+      STAGE SELECT
+    </p>
+
+
+    <!-- STAGE 1 -->
+
+    <section
+      class="stage-card open-stage"
+      id="stage1Card"
+    >
+
+      <p class="stage-number">
+        STAGE 1
+      </p>
+
+      <h2 id="stage1Name">
+        ネットワーク基礎
+      </h2>
+
+      <p
+        class="stars"
+        id="stage1Stars"
+      >
+        ☆☆☆
+      </p>
+
+      <p class="small">
+        10 QUESTIONS
+      </p>
+
+      <button id="stage1Button">
+        ⚔️ 挑戦する
+      </button>
+
+    </section>
+
+
+    <!-- STAGE 2 -->
+
+    <section
+      class="stage-card locked-stage"
+      id="stage2Card"
+    >
+
+      <p class="stage-number">
+        STAGE 2
+      </p>
+
+      <h2 id="stage2Name">
+        TCP/IPの洞窟
+      </h2>
+
+      <p
+        class="stars"
+        id="stage2Stars"
+      >
+        ☆☆☆
+      </p>
+
+      <p class="small">
+        10 QUESTIONS
+      </p>
+
+      <p
+        class="lock-text"
+        id="stage2Lock"
+      >
+        🔒 STAGE 1を攻略せよ
+      </p>
+
+      <button
+        id="stage2Button"
+        class="hidden"
+      >
+        ⚔️ 挑戦する
+      </button>
+
+    </section>
+
+
+    <!-- STAGE 3 -->
+
+    <section
+      class="stage-card locked-stage"
+      id="stage3Card"
+    >
+
+      <p class="stage-number">
+        STAGE 3
+      </p>
+
+      <h2 id="stage3Name">
+        ネットワーク構成の塔
+      </h2>
+
+      <p
+        class="stars"
+        id="stage3Stars"
+      >
+        ☆☆☆
+      </p>
+
+      <p class="small">
+       10 QUESTIONS
+      </p>
+
+      <p
+        class="lock-text"
+        id="stage3Lock"
+      >
+        🔒 STAGE 2を攻略せよ
+      </p>
+
+      <button
+        id="stage3Button"
+        class="hidden"
+      >
+        ⚔️ 挑戦する
+      </button>
+
+    </section>
+
+
+    <!-- BOSS -->
+
+    <section
+      class="stage-card boss-stage locked-stage"
+      id="bossCard"
+    >
+
+      <p class="stage-number">
+        👹 BOSS
+      </p>
+
+      <h2 id="bossName">
+        ネットワークの魔竜
+      </h2>
+
+      <p
+        class="stars"
+        id="bossStars"
+      >
+        ☆☆☆
+      </p>
+
+      <p class="small">
+        10 QUESTIONS
+      </p>
+
+      <p
+        class="lock-text"
+        id="bossLock"
+      >
+        🔒 STAGE 3を攻略せよ
+      </p>
+
+      <button
+        id="bossButton"
+        class="hidden"
+      >
+        👹 BOSSに挑む
+      </button>
+
+    </section>
+
+
+    <button
+      id="stageBackButton"
+      class="gray-button"
+    >
+      ← WORLD MAPへ
+    </button>
+
+  </section>
+
+
+  <!-- =========================
+       BATTLE
+  ========================== -->
+
+  <section
+    id="battleScreen"
+    class="panel hidden"
+  >
+
+    <p
+      class="stage"
+      id="stageText"
+    ></p>
+
+    <h2 id="battleTitle"></h2>
+
+    <p
+      id="questionText"
+      class="question-text"
+    ></p>
+
+    <div id="answerButtons"></div>
+
+    <div
+      id="result"
+      class="result"
+    ></div>
+
+    <button
+      id="nextButton"
+      class="blue-button hidden"
+    >
+      次の問題へ ⚔️
+    </button>
+
+  </section>
+
+
+  <!-- =========================
+       CLEAR
+  ========================== -->
+
+  <section
+    id="clearScreen"
+    class="panel hidden"
+  >
+
+    <h1 id="clearTitle">
+      🏆 QUEST CLEAR!
+    </h1>
+
+    <h2 id="clearStageName"></h2>
+
+    <div
+      class="clear-stars"
+      id="clearStars"
+    >
+      ☆☆☆
+    </div>
+
+    <p id="clearScore"></p>
+
+    <p id="clearRate"></p>
+
+    <p id="clearExp"></p>
+
+    <p id="bestScore"></p>
+
+    <div
+      id="unlockMessage"
+      class="unlock-message"
+    ></div>
+
+    <button
+      id="clearStageButton"
+      class="blue-button"
+    >
+      🌊 STAGE SELECTへ
+    </button>
+
+    <button
+      id="clearHomeButton"
+      class="gray-button"
+    >
+      🏠 ホームへ
+    </button>
+
+  </section>
+
+
+  <!-- =========================
+       REVIEW DUNGEON
+  ========================== -->
+
+  <section
+    id="dungeonScreen"
+    class="panel dungeon hidden"
+  >
+
+    <h1>
+      💀 復習ダンジョン
+    </h1>
+
+    <p id="monsterNumber"></p>
+
+
+    <div class="monster">
+
+      <div class="monster-icon">
+        👻
+      </div>
+
+      <h2 id="monsterName">
+        復習ゴースト
+      </h2>
+
+      <p id="monsterHp"></p>
+
+    </div>
+
+
+    <p
+      id="reviewQuestion"
+      class="question-text"
+    ></p>
+
+    <div id="reviewAnswers"></div>
+
+    <div
+      id="reviewResult"
+      class="result"
+    ></div>
+
+    <button
+      id="nextMonsterButton"
+      class="blue-button hidden"
+    >
+      次へ ⚔️
+    </button>
+
+    <button
+      id="backHomeButton"
+      class="gray-button"
+    >
+      🏠 ホームへ
+    </button>
+
+  </section>
+
+</main>
+
+</body>
+</html>
+
+<script src="./script.js"></script>

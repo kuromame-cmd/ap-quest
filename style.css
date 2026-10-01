@@ -1,0 +1,894 @@
+/* =====================================
+   AP QUEST Ver.0.6
+   CodePen CSS
+===================================== */
+
+
+/* =====================================
+   全体設定
+===================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  background:
+    linear-gradient(
+      180deg,
+      #15365e 0%,
+      #071525 100%
+    );
+
+  color: white;
+
+  min-height: 100vh;
+}
+
+
+/* =====================================
+   ゲーム全体
+===================================== */
+
+.game {
+  width: 92%;
+  max-width: 430px;
+
+  margin: 0 auto;
+
+  padding:
+    35px 0 60px;
+
+  text-align: center;
+}
+
+
+/* =====================================
+   基本文字
+===================================== */
+
+h1 {
+  color: #ffd86b;
+
+  font-size: 36px;
+
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #c8d8ea;
+
+  margin-top: 8px;
+  margin-bottom: 25px;
+}
+
+.small {
+  font-size: 14px;
+
+  opacity: 0.8;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+/* =====================================
+   プレイヤー
+===================================== */
+
+.player,
+.quest,
+.panel {
+  background: #fff8e7;
+
+  color: #222;
+
+  padding: 22px;
+
+  border-radius: 18px;
+
+  margin: 18px 0;
+
+  box-shadow:
+    0 5px 15px
+    rgba(0, 0, 0, 0.18);
+}
+
+.player h2 {
+  font-size: 28px;
+
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.title {
+  color: #84620e;
+
+  font-weight: bold;
+}
+
+.streak {
+  font-weight: bold;
+}
+
+
+/* =====================================
+   EXPゲージ
+===================================== */
+
+.exp-bar {
+  width: 100%;
+
+  height: 15px;
+
+  background: #ccc;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  margin: 15px 0;
+}
+
+.exp {
+  width: 0%;
+
+  height: 100%;
+
+  background: #41a9ff;
+
+  border-radius: 20px;
+
+  transition:
+    width 0.5s;
+}
+
+
+/* =====================================
+   ボタン共通
+===================================== */
+
+button {
+  display: block;
+
+  width: 100%;
+
+  padding: 16px;
+
+  margin-top: 12px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  font-family: inherit;
+
+  font-size: 17px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+
+/* ワールドマップ */
+
+#mapButton {
+  background: #c74232;
+
+  color: white;
+}
+
+
+/* ステージ */
+
+#stage1Button,
+#stage2Button,
+#stage3Button {
+  background: #c74232;
+
+  color: white;
+}
+
+
+/* BOSS */
+
+#bossButton {
+  background: #762626;
+
+  color: white;
+}
+
+
+/* 復習ダンジョン */
+
+#dungeonButton {
+  background: #7651a8;
+
+  color: white;
+}
+
+
+/* 青ボタン */
+
+.blue-button {
+  background: #2878b5;
+
+  color: white;
+}
+
+
+/* 戻るボタン */
+
+.gray-button {
+  background: #555;
+
+  color: white;
+}
+
+
+/* =====================================
+   復習ダンジョン HOME表示
+===================================== */
+
+.monster-box {
+  background: #241735;
+
+  color: white;
+
+  border:
+    2px solid #8b63c7;
+
+  padding: 22px;
+
+  border-radius: 18px;
+
+  margin: 18px 0;
+
+  box-shadow:
+    0 5px 15px
+    rgba(0, 0, 0, 0.2);
+}
+
+.monster-box h2 {
+  color: #d8bdff;
+
+  margin-top: 0;
+}
+
+
+/* =====================================
+   WORLD MAP
+===================================== */
+
+.world {
+  display: flex;
+
+  align-items: center;
+
+  background: #fff8e7;
+
+  color: #222;
+
+  border-radius: 18px;
+
+  padding: 18px;
+
+  margin: 15px 0;
+
+  text-align: left;
+
+  border:
+    3px solid #d7bd72;
+
+  box-shadow:
+    0 5px 15px
+    rgba(0, 0, 0, 0.18);
+
+  transition:
+    transform 0.15s;
+}
+
+.world-icon {
+  flex-shrink: 0;
+
+  font-size: 48px;
+
+  margin-right: 18px;
+}
+
+.world-info {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.world-info h2 {
+  margin:
+    0 0 8px;
+
+  font-size: 20px;
+}
+
+.world-info p {
+  margin:
+    5px 0;
+}
+
+
+/* ネットワーク海域 */
+
+.network-world {
+  border-color: #48a9dd;
+
+  cursor: pointer;
+}
+
+.network-world:active {
+  transform:
+    scale(0.97);
+}
+
+
+/* ロックされたエリア */
+
+.locked {
+  opacity: 0.45;
+}
+
+
+/* =====================================
+   WORLD攻略ゲージ
+===================================== */
+
+.world-progress {
+  width: 100%;
+
+  height: 10px;
+
+  background: #ccc;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  margin:
+    8px 0;
+}
+
+.world-progress-bar {
+  width: 0%;
+
+  height: 100%;
+
+  background: #42a9e0;
+
+  border-radius: 10px;
+
+  transition:
+    width 0.5s;
+}
+
+
+/* =====================================
+   STAGE SELECT
+===================================== */
+
+.stage-card {
+  background: #fff8e7;
+
+  color: #222;
+
+  padding: 22px;
+
+  margin: 18px 0;
+
+  border-radius: 18px;
+
+  border:
+    3px solid #d7bd72;
+
+  box-shadow:
+    0 5px 15px
+    rgba(0, 0, 0, 0.18);
+}
+
+.open-stage {
+  border-color: #47aee0;
+}
+
+.locked-stage {
+  opacity: 0.45;
+}
+
+.stage-number {
+  margin: 0;
+
+  font-weight: bold;
+
+  color: #267eaa;
+}
+
+.stage-card h2 {
+  margin:
+    8px 0 5px;
+}
+
+
+/* ★評価 */
+
+.stars {
+  font-size: 32px;
+
+  color: #e5ad19;
+
+  letter-spacing: 4px;
+
+  margin:
+    12px 0;
+}
+
+
+/* BOSS */
+
+.boss-stage {
+  border-color: #a33c3c;
+
+  background: #f5e3df;
+}
+
+.boss-stage .stage-number {
+  color: #9e2f2f;
+}
+
+.lock-text {
+  font-weight: bold;
+}
+
+
+/* =====================================
+   QUIZ / BATTLE
+===================================== */
+
+.stage {
+  color: #b33a2e;
+
+  font-weight: bold;
+}
+
+.question-text {
+  font-size: 19px;
+
+  font-weight: 500;
+
+  line-height: 1.6;
+
+  margin:
+    25px 0;
+}
+
+
+/* =====================================
+   回答ボタン
+===================================== */
+
+.answer {
+  display: block;
+
+  width: 100%;
+
+  background: white;
+
+  color: #222;
+
+  border:
+    2px solid #ddd;
+
+  margin:
+    10px 0;
+
+  padding: 15px;
+
+  border-radius: 12px;
+
+  text-align: left;
+
+  font-size: 16px;
+
+  font-weight: 600;
+}
+
+.answer:active {
+  transform:
+    scale(0.98);
+}
+
+.answer:disabled {
+  opacity: 0.75;
+}
+
+
+/* 正解 */
+
+.correct {
+  background:
+    #d8f5dc !important;
+
+  border-color:
+    #38a34a !important;
+
+  color:
+    #174d22 !important;
+}
+
+
+/* 不正解 */
+
+.wrong {
+  background:
+    #ffd9d9 !important;
+
+  border-color:
+    #d84646 !important;
+
+  color:
+    #721c1c !important;
+}
+
+
+/* =====================================
+   解説
+===================================== */
+
+.result {
+  margin-top: 20px;
+
+  font-size: 17px;
+
+  line-height: 1.6;
+}
+
+
+/* =====================================
+   QUEST CLEAR
+===================================== */
+
+.clear-stars {
+  font-size: 50px;
+
+  color: #e5ad19;
+
+  letter-spacing: 5px;
+
+  margin:
+    25px 0;
+}
+
+.unlock-message {
+  margin:
+    22px 0;
+
+  padding: 15px;
+
+  border-radius: 12px;
+
+  background: #fff1b8;
+
+  color: #634a00;
+
+  font-weight: bold;
+
+  line-height: 1.6;
+
+  border:
+    2px solid #e8c954;
+}
+
+.unlock-message:empty {
+  display: none;
+}
+
+
+/* =====================================
+   復習ダンジョン
+===================================== */
+
+.dungeon {
+  background: #1e152c;
+
+  color: white;
+
+  border:
+    2px solid #7651a8;
+}
+
+.dungeon h1 {
+  color: #d8bdff;
+}
+
+.monster {
+  background: #302142;
+
+  padding: 20px;
+
+  border-radius: 18px;
+
+  margin:
+    20px 0;
+
+  border:
+    2px solid #7651a8;
+}
+
+.monster h2 {
+  color: white;
+}
+
+.monster-icon {
+  font-size: 70px;
+}
+
+#monsterHp {
+  font-size: 22px;
+}
+
+
+/* 復習ダンジョンの問題 */
+
+.dungeon .question-text {
+  color: white;
+}
+
+
+/* =====================================
+   LEVEL UP
+===================================== */
+
+.level-up-overlay {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background:
+    rgba(5, 10, 25, 0.92);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 20px;
+
+  z-index: 9999;
+}
+
+.level-up-box {
+  width: 85%;
+
+  max-width: 360px;
+
+  padding:
+    35px 20px;
+
+  background:
+    linear-gradient(
+      #fff7d6,
+      #e7c66a
+    );
+
+  color: #292014;
+
+  border:
+    4px solid #fff1a6;
+
+  border-radius: 20px;
+
+  text-align: center;
+
+  box-shadow:
+    0 0 40px
+    #ffd95a;
+}
+
+.level-up-box h1 {
+  color: #a96800;
+
+  font-size: 38px;
+
+  margin-top: 10px;
+}
+
+.level-up-stars {
+  font-size: 32px;
+}
+
+.level-up-box button {
+  background: #a96800;
+
+  color: white;
+}
+
+
+/* =====================================
+   iPhone向け微調整
+===================================== */
+
+@media (
+  max-width: 480px
+) {
+
+  .game {
+    width: 92%;
+
+    padding-top: 28px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .player h2 {
+    font-size: 26px;
+  }
+
+  .world-icon {
+    font-size: 42px;
+
+    margin-right: 14px;
+  }
+
+  .world-info h2 {
+    font-size: 18px;
+  }
+
+  .stage-card {
+    padding: 20px;
+  }
+
+  .clear-stars {
+    font-size: 42px;
+  }
+
+}
+
+/* =====================================
+   SECURITY WORLD
+===================================== */
+
+.security-world {
+  border-color: #9b72cf;
+  cursor: pointer;
+}
+
+.security-world:active {
+  transform: scale(0.97);
+}
+
+.security-progress-bar {
+  background: #9567c9;
+}
+
+/* =====================================
+   DATABASE WORLD
+===================================== */
+
+.database-world {
+  border-color: #58a56a;
+  cursor: pointer;
+}
+
+.database-world:active {
+  transform: scale(0.97);
+}
+
+.database-progress-bar {
+  background: #58a56a;
+}
+
+/* =====================================
+   MANAGEMENT WORLD
+===================================== */
+
+.management-world {
+  border-color: #d2a84c;
+  cursor: pointer;
+}
+
+.management-world:active {
+  transform: scale(0.97);
+}
+
+.management-progress-bar {
+  background: #d2a84c;
+}
+
+/* =====================================
+   STRATEGY WORLD
+===================================== */
+
+.strategy-world {
+  border-color: #c66a72;
+  cursor: pointer;
+}
+
+.strategy-world:active {
+  transform: scale(0.97);
+}
+
+.strategy-progress-bar {
+  background: #c66a72;
+}
+
+/* =====================================
+   FINAL TRIAL
+===================================== */
+
+.final-world {
+  border-color: #e3bd4f;
+  background:
+    linear-gradient(
+      135deg,
+      #fff8e7,
+      #ffe9a8
+    );
+}
+
+.final-world:not(.locked) {
+  cursor: pointer;
+  box-shadow:
+    0 0 20px
+    rgba(255, 216, 107, 0.5);
+}
+
+.final-world:not(.locked):active {
+  transform: scale(0.97);
+}
+
+.final-world.locked {
+  opacity: 0.45;
+}
+
+/* =====================================
+   SAVE DATA
+===================================== */
+
+.save-area {
+  margin-top: 24px;
+  padding: 18px;
+  border: 2px solid #8fa8bd;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.save-area h3 {
+  margin-top: 0;
+}
+
+.save-area button {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+}
