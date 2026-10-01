@@ -3859,7 +3859,7 @@ function showLevelUp(
 
       <h1>LEVEL UP!</h1>
 
-      <p>黒豆</p>
+      <p>冒険者</p>
 
       <h2>
         Lv.${oldLevel}
